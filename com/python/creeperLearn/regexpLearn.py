@@ -29,7 +29,7 @@ print(result2)
 .    匹配除换行符以外的任意字符
 ^    匹配字符串的开始位置
 $    匹配字符串的结束位置
-*    匹配0次、1次或者多粗前面的原子
+*    匹配0次、1次或者多次前面的原子
 ？   匹配0次或1次前面的原子
 +    匹配1次或者多次前面的原子
 {n}   前面的原子恰好出现n次
@@ -39,4 +39,66 @@ pattern3=".python.."
 string3="sasasaspython234sa"
 result3=re.search(pattern3,string3)
 print(result3)
+
+'''
+模式选择符
+|   匹配任意一个,有可能是匹配到第一个符合条件的就结束、
+()  被扩起来的作为一个整体进行匹配
+'''
+pattern4='python|php'
+string4='abcsdpython345php_123'
+result4=re.search(pattern4,string)
+print(result4)
+
+pattern5='(cd){3}'
+pattern6='cd{1,}'
+string5='1290cdcdcd_909no'
+result5_1=re.search(pattern5,string5)
+result5_2=re.search(pattern6,string5)
+print(result5_1)
+print(result5_2)
+
+
+'''
+模式修正，可以实现匹配结果的调整
+I   忽略大小写
+M   多行匹配
+L   本地化识别匹配
+U   根据Unicode字符及解析字符
+S   匹配包括换行符，"." 匹配的字符包括换行符，即可以匹配任意字符
+'''
+
+pattern7="python"#小写的匹配
+pattern8="Python"#大写的匹配
+string7="090python_112mm"
+result6=re.search(pattern8,string7,re.I)#忽略了大小写
+result6_1=re.search(pattern8,string7)
+print(result6)
+print(result6_1)
+
+
+
+'''
+贪婪模式 尽可能多的进行匹配
+懒惰模式 尽可能少的进行匹配
+'''
+pattern_greed="p.*y"#贪婪模式写法
+pattern_lazy="p.*?y"#懒惰模式写法
+string10="abcdefapython_123py"
+result_greed=re.search(pattern_greed,string10)
+result_lazy=re.search(pattern_lazy,string10)
+print(result_greed)
+print(result_lazy)
+
+
+
+
+
+
+
+
+
+
+
+
 
