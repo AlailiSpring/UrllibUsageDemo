@@ -91,6 +91,41 @@ print(result_greed)
 print(result_lazy)
 
 
+'''
+正则表达式涉及到的相应的函数
+re.match(pattern,string,flag) match函数匹配的pattern必须是串的开始位置
+re.search(pattern,string,flag)  是全文匹配对需要进行匹配的格式的位置没有要求
+'''
+
+#例子略
+
+'''
+假如我们想要匹配出一个串中所有符合条件的字符，我们可以采用如下的策略进行
+1. re.compile()对正则表达式进行预编译
+2. findAll()根据正则表达式从源字符串中将匹配结果全部找出
+'''
+string_findAll='hellomypythonispythonmethodpython123'
+pattern_findall=re.compile(".python.")
+result_findall=pattern_findall.findall(string_findAll)
+print(result_findall)
+
+'''
+替换函数
+re.sub(pattern,rep,string,max)
+下面是参数的说明
+pattern 正则表达式
+rep 要替换成的字符串
+string 源字符串
+max 可选项，最多替换的次数，忽略不写，代表根据符合的模式全部替换
+'''
+string_rep='hellomypythonisa123goodpythonwow'
+pattern_rep='.python'
+result_rep=re.sub(pattern_rep,'php',string_rep)
+result_rep_2=re.sub(pattern_rep,'php',string_rep,1)
+print(result_rep)
+print(result_rep_2)
+
+
 
 
 
